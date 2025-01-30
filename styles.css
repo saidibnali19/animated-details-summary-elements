@@ -1,0 +1,102 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    interpolate-size: allow-keywords;
+}
+
+/* Custom properties */
+:root {
+    --clr-primary: 0 0% 90%;
+    --clr-secondary: 0 0% 10%;
+    --clr-accent: 0 100% 50%;
+    --clr-light: 300 100% 50%;
+
+    --fw-bold: bold;
+    --fw-normal: normal;
+}
+
+/* Utility classes */
+/* Typography */
+.bg-primary {
+    background-color: hsl(var(--clr-primary));
+}
+
+.text-secondary {
+    color: hsl(var(--clr-secondary));
+}
+
+.text-accent {
+    color: hsl(var(--clr-accent));
+}
+
+.fw-bold {
+    font-weight: var(--fw-bold);
+}
+
+.fw-normal {
+    font-weight: var(--fw-normal);
+}
+
+/* Layout */
+.wrapper {
+    --_wrapper-max-width: 45rem;
+    --_wrapper-padding: 1rem;
+
+    width: min(100% - 2 * var(--_wrapper-padding), var(--_wrapper-max-width));
+    margin-inline: auto;
+}
+
+.flow > * + * {
+    margin-top: 1rem;
+}
+
+/* Components */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+}
+
+article {
+    margin-block: 3rem;
+}
+
+details {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow: clip;
+
+    summary {
+        list-style-position: outside;
+
+        &::marker {
+            font-size: 0.75em;
+            color: hsl(var(--clr-secondary) / 0.75);
+        }
+    }
+
+    &::details-content {
+        /* add height animation styles on the pseudo-element */
+        height: 0;
+        transition: height 350ms ease-in-out,
+            content-visibility 350ms ease-in-out;
+        transition-behavior: allow-discrete;
+    }
+
+    div {
+        padding-block: 1rem; /* add spacing styles to the individual elements */
+    }
+
+    a {
+        display: inline-block; /* add spacing styles to the individual elements */
+    }
+}
+
+details[open]::details-content {
+    height: auto;
+}
